@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+.venv/
+database/*.db
+logs/
+output/
+lesson_memo.md
