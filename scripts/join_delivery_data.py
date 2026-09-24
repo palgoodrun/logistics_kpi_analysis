@@ -9,7 +9,7 @@ from pathlib import Path
 # SQL
 # ==================================================
 # ==========================
-# delivery_records_added_carrier_code
+# delivery_records_added_codes
 # ==========================
 delivery_records_added_codes = """
     SELECT
@@ -20,10 +20,10 @@ delivery_records_added_codes = """
         AM.area_code,
         DR.quantity
     FROM delivery_records AS DR
-    INNER JOIN carrier_master AS CM
-      ON DR.carrier_name = CM.carrier_name
-    INNER JOIN area_master AS AM
-      ON DR.prefecture = AM.prefecture;
+    LEFT JOIN carrier_master AS CM
+        ON DR.carrier_name = CM.carrier_name
+    JOIN area_master AS AM
+        ON DR.prefecture = AM.prefecture;
 """
 
 
@@ -51,7 +51,7 @@ def main():
 
     # NOTE
     # 結果確認用 logに書き替え予定
-    print(delivery_records_added_codes_df.head())
+    print(delivery_records_added_codes_df)
 
     conn.close()
 

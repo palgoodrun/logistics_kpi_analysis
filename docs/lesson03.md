@@ -77,7 +77,9 @@ carrier_masterとarea_masterをJOINした後、
 
 1回目のINNER JOIN後も10件だったのはなぜですか？
 
-> area_masterにcarrier_codeの列を追加しただけなので行数は変わらない
+> delivery_recordsにcarrier_codeの列を追加しただけなので行数は変わらない
+
+> ONに指定した条件が10件とも合致したから
 
 ---
 
@@ -85,8 +87,9 @@ carrier_masterとarea_masterをJOINした後、
 
 2回目のINNER JOIN後も10件だったのはなぜですか？
 
-> carrier_codeを追加したarea_masterにarea_codeの列を追加しただけなので行数は変わらない
+> carrier_codeを追加したdelivery_recordsにarea_codeの列を追加しただけなので行数は変わらない
 
+> ONに指定した条件が10件とも合致したから
 ---
 
 ## Q9
@@ -108,6 +111,8 @@ INNER JOIN後の件数はどうなると予想しますか？
 まだ実際にデータを変更する必要はありません。
 
 > 件数は変わらない。（理由）ONでキーが一致していないので、勝手に追加されない。
+
+>> 再回答）1件行が減る
 
 ---
 
