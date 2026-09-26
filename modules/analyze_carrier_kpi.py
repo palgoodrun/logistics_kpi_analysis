@@ -52,19 +52,10 @@ def main():
 
     conn = sqlite3.connect(db_path)
 
-    delivery_records_added_carrier_rate_df = read_sql(
+    carrier_summary_df = read_sql(
         delivery_records_added_carrier_rate, conn
     )
 
-    # NOTE
-    # 確認用 削除予定
-    print(delivery_records_added_carrier_rate_df)
-
     conn.close()
 
-
-# ==================================================
-# entrypoint
-# ==================================================
-if __name__ == "__main__":
-    main()
+    return carrier_summary_df
