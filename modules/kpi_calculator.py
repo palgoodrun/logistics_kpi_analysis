@@ -17,16 +17,6 @@ def calculate_share_ratios(df: pd.DataFrame) -> pd.DataFrame:
 
     df["delivery_share"] = df["delivery_count"] / delivery_count_of_all
 
-    # NOTE
-    # 確認用要削除
-    total_ratios_of_delivery_share = df["delivery_share"].sum()
-    print(f"「delivery_share合計 == 1.0」確認 ->: {total_ratios_of_delivery_share}")
-
     df["freight_share"] = df["total_freight"] / total_freight_of_all
-
-    # NOTE
-    # 確認用要削除
-    total_ratios_of_freght_share = df["freight_share"].sum()
-    print(f"「freight_share合計 == 1.0」確認 ->: {total_ratios_of_freght_share}")
 
     return df
