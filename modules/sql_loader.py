@@ -23,6 +23,4 @@ def read_sql(sql: str, conn: sqlite3.Connection) -> pd.DataFrame:
 
     df = pd.read_sql(sql, conn)
 
-    print(f"SQL読み取り成功 件数: {len(df)}件")
-
     return df
