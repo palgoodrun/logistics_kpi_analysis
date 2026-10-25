@@ -33,7 +33,7 @@ def write_dataframe(
 # ==================================================
 # apply_header_style()
 # ==================================================
-def apply_header_style(ws: Worksheet, header_row: str = 4) -> None:
+def apply_header_style(ws: Worksheet, header_row: int = 4) -> None:
 
     header_font = Font(bold=True, color="FFFFFF")
     header_fill = PatternFill("solid", fgColor="24466B")
