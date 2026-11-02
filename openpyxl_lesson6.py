@@ -3,7 +3,7 @@
 # ==================================================
 from pathlib import Path
 from openpyxl import Workbook, load_workbook
-from openpyxl.styles import Font, PatternFill, Alignment
+from openpyxl.styles import Font, PatternFill
 from openpyxl.worksheet.worksheet import Worksheet
 from openpyxl.utils import get_column_letter
 
@@ -139,7 +139,7 @@ def update_report(template_path: Path, output_path: Path) -> None:
     wb = load_workbook(template_path)
 
     # ==========================
-    # velidation
+    # validation
     # ==========================
 
     # --------------------------
@@ -168,9 +168,9 @@ def update_report(template_path: Path, output_path: Path) -> None:
 
     invalid_heading_summary = []
 
-    for coodinate, expected in required_heading_summary.items():
-        if ws_summary[coodinate].value != expected:
-            invalid_heading_summary.append({coodinate: expected})
+    for coordinate, expected in required_heading_summary.items():
+        if ws_summary[coordinate].value != expected:
+            invalid_heading_summary.append({coordinate: expected})
 
     if invalid_heading_summary:
         raise ValueError(
@@ -192,9 +192,9 @@ def update_report(template_path: Path, output_path: Path) -> None:
 
     invalid_heading_carrier = []
 
-    for coodinate, expected in required_heading_carrier.items():
-        if ws_carrier[coodinate].value != expected:
-            invalid_heading_carrier.append({coodinate: expected})
+    for coordinate, expected in required_heading_carrier.items():
+        if ws_carrier[coordinate].value != expected:
+            invalid_heading_carrier.append({coordinate: expected})
 
     if invalid_heading_carrier:
         raise ValueError(
@@ -209,13 +209,13 @@ def update_report(template_path: Path, output_path: Path) -> None:
 
     invalid_calc_carrier = []
 
-    for coodinate, expected in required_calc_carrier.items():
-        if ws_carrier[coodinate].value != expected:
-            invalid_calc_carrier.append({coodinate: expected})
+    for coordinate, expected in required_calc_carrier.items():
+        if ws_carrier[coordinate].value != expected:
+            invalid_calc_carrier.append({coordinate: expected})
 
     if invalid_calc_carrier:
         raise ValueError(
-            f"Carrierシートに必要な見出しがありません: {invalid_calc_carrier}"
+            f"Carrierシートに必要な計算式がありません: {invalid_calc_carrier}"
         )
 
     # ==========================
@@ -276,9 +276,9 @@ def validate_report(output_path: Path) -> None:
 
     invalid_values_summary = []
 
-    for coodinate, expected in expected_values_summary.items():
-        if ws_summary[coodinate].value != expected:
-            invalid_values_summary.append({coodinate: expected})
+    for coordinate, expected in expected_values_summary.items():
+        if ws_summary[coordinate].value != expected:
+            invalid_values_summary.append({coordinate: expected})
 
     if invalid_values_summary:
         raise ValueError(
@@ -289,7 +289,7 @@ def validate_report(output_path: Path) -> None:
 
     if ws_summary["A5"].fill != expected_fill_summary:
         raise ValueError(
-            f"Sammaryシートの書式設定が設定と異なります 期待値: {expected_fill_summary}"
+            f"Summaryシートの書式設定が設定と異なります 期待値: {expected_fill_summary}"
         )
 
     # --------------------------
@@ -307,9 +307,9 @@ def validate_report(output_path: Path) -> None:
 
     invalid_values_carrier = []
 
-    for coodinate, expected in expected_values_carrier.items():
-        if ws_carrier[coodinate].value != expected:
-            invalid_values_carrier.append({coodinate: expected})
+    for coordinate, expected in expected_values_carrier.items():
+        if ws_carrier[coordinate].value != expected:
+            invalid_values_carrier.append({coordinate: expected})
 
     if invalid_values_carrier:
         raise ValueError(
